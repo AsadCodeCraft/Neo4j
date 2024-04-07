@@ -1,1 +1,11 @@
 
+```javascript
+LOAD CSV WITH HEADERS FROM 'file:///person.csv' AS row
+CREATE (:Student {
+    studentID: toInteger(row.studentID),
+    name: row.Name,
+    age: toInteger(row.Age)
+})
+MERGE (:College {name: row.College})
+MERGE (:courses {name: row.offer})
+```
